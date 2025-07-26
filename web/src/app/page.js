@@ -55,7 +55,7 @@ export default function Home() {
         <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px] ">
           <div className="flex flex-col items-start justify-center w-full max-w-6xl mx-auto gap-5 text-left">
             <h1 className="font-medium text-4xl sm:text-5xl leading-tight font-most text-teal-500">
-              Efficiency At It's Peak
+              Efficiency At It&apos;s Peak
             </h1>
             <h3 className="text-xl text-gray-600  ">
               Double Your Productivity

@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import ReactMarkdown from "react-markdown";
 import { Pencil } from "lucide-react";
+import DeleteCapture from "@/components/deleteCapture";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { fetchProjectDetailsById } from "@/db/fetch";
-import Link from "next/link";
 import SanitizedHTML from "@/components/SanitizedHTML";
+import OpenLinks from "@/components/openLinks";
 
 export default async function ProjectDetailsPage({ params }) {
     const awaitedParams = await params;
@@ -34,13 +34,7 @@ export default async function ProjectDetailsPage({ params }) {
                         <span>Updated {new Date(project.updatedAt).toLocaleDateString()}</span>
                     </div>
                     {/* Add Capture Button */}
-                    <div className="flex justify-end">
-                        <Link href={`/dashboard/${project.id}/new`}>
-                            <button className="bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors">
-                                Add Capture
-                            </button>
-                        </Link>
-                    </div>
+                    <OpenLinks captures={project.captures} projectId={project.id} />
                 </div>
 
                 {/* Captures Section */}
@@ -71,22 +65,26 @@ export default async function ProjectDetailsPage({ params }) {
                                     <div className="mb-4">
                                         {/* Small muted capture number above title */}
                                         <div className="text-xs text-muted-foreground mb-1">Capture {index + 1}</div>
-                                        <div className="flex items-center mb-2">
-                                            <h2 className="text-lg font-semibold text-foreground mr-2">
+                                        <div className="flex items-center justify-between mb-3 group">
+                                            <h2 className="text-lg font-semibold text-foreground truncate flex-1 mr-3">
                                                 {capture.pageTitle || capture.url || `Capture ${index + 1}`}
                                             </h2>
-                                            <a href={`/dashboard/${project.id}/edit?capture=${capture.id}`}>
+                                            <div className="flex gap-1 items-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                                 <Tooltip>
                                                     <TooltipTrigger asChild>
-                                                        <a href={`/dashboard/${project.id}/edit?capture=${capture.id}`} className="inline-flex items-center">
-                                                            <Pencil size={10} className="text-blue-500 hover:text-blue-600 cursor-pointer" />
+                                                        <a
+                                                            href={`/dashboard/${project.id}/edit?capture=${capture.id}`}
+                                                            className="inline-flex items-center justify-center w-8 h-8 rounded-md hover:bg-muted/80 transition-colors duration-200 group/edit"
+                                                        >
+                                                            <Pencil size={14} className="text-muted-foreground group-hover/edit:text-blue-600 transition-colors duration-200" />
                                                         </a>
                                                     </TooltipTrigger>
                                                     <TooltipContent side="top" align="center">
-                                                        Edit
+                                                        <p className="text-xs">Edit capture</p>
                                                     </TooltipContent>
                                                 </Tooltip>
-                                            </a>
+                                                <DeleteCapture captureId={capture.id} projectId={project.id} />
+                                            </div>
                                         </div>
                                         <div className="text-sm text-muted-foreground mb-4">
                                             {capture.createdAt && new Date(capture.createdAt).toLocaleString()}
