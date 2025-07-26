@@ -22,17 +22,19 @@ import {
 export function NavProjects({
   projects
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+  // Sort projects by updatedAt descending
+  const sortedProjects = [...projects].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel>Projects</SidebarGroupLabel>
       <SidebarMenu>
-        {projects.map((item) => (
-          <SidebarMenuItem key={item.name}>
+        {sortedProjects.map((item) => (
+          <SidebarMenuItem key={item.id}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
-                <item.icon />
+              <a href={`/dashboard/${item.id}`}>
+                <Folder />
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>
@@ -64,12 +66,14 @@ export function NavProjects({
             </DropdownMenu>
           </SidebarMenuItem>
         ))}
-        <SidebarMenuItem>
-          <SidebarMenuButton>
-            <MoreHorizontal />
-            <span>More</span>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
+        {sortedProjects.length > 10 && (
+          <SidebarMenuItem>
+            <SidebarMenuButton>
+              <MoreHorizontal />
+              <span>More</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        )}
       </SidebarMenu>
     </SidebarGroup>
   );

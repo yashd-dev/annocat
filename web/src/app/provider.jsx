@@ -2,10 +2,15 @@
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
+import { Toaster } from "@/components/ui/sonner"
 
-export function ThemeProvider({
+
+export function Provider({
     children,
     ...props
 }) {
-    return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+    return <NextThemesProvider attribute="class"
+        defaultTheme="light"
+        disableTransitionOnChange>{children}        <Toaster />
+    </NextThemesProvider>
 }

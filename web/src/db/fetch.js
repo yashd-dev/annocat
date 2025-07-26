@@ -1,3 +1,4 @@
+"use server";
 import { db } from "./index";
 import { auth } from "@/lib/auth";
 import { project, capture, user } from "./schema";

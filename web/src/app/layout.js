@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, IBM_Plex_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "./provider";
+import { Provider } from "./provider";
 const ibm = IBM_Plex_Sans({
   variable: "--font-ibm",
   subsets: ["latin"],
@@ -20,13 +20,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${ibm.className} ${monster.variable} antialiased selection:bg-teal-500 selection:text-black`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          disableTransitionOnChange
+        <Provider
+          
         >
           {children}
-        </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
