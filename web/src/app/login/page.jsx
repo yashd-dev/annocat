@@ -3,7 +3,7 @@ import HeroHeader from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 
-export default async function Login() {
+export default function Login() {
 
     return (
         <>

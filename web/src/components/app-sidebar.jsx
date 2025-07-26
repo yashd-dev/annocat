@@ -27,6 +27,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useEffect } from "react"
+import { getCurrentUser } from "@/db/fetch"
 
 const data = {
   user: {
@@ -151,6 +153,10 @@ const data = {
     },
   ],
 }
+
+useEffect({
+  
+},[])
 
 export function AppSidebar({
   ...props

@@ -4,7 +4,7 @@ import { project, capture, user } from "./schema";
 import { eq, and, desc } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
-const getCurrentUser = async () => {
+export const getCurrentUser = async () => {
   const session = await auth.api.getSession({
     headers:
       typeof window !== "undefined"
