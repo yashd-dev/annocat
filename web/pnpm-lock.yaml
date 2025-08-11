@@ -41,6 +41,9 @@ importers:
       better-auth:
         specifier: ^1.2.12
         version: 1.2.12
+      cal-sans:
+        specifier: ^1.0.1
+        version: 1.0.1
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1751,6 +1754,9 @@ packages:
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+
+  cal-sans@1.0.1:
+    resolution: {integrity: sha512-XwN3/7jez8WmFVcNnNqO2K9lh133KiIcURCyGFnSM+ZmNZ8zIcOTNfr3SpenLAkRceYsq+fQNX/PL4C1rIkEPQ==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -5052,6 +5058,8 @@ snapshots:
       fill-range: 7.1.1
 
   buffer-from@1.1.2: {}
+
+  cal-sans@1.0.1: {}
 
   call-bind-apply-helpers@1.0.2:
     dependencies:

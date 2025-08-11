@@ -11,14 +11,14 @@ export default function Home() {
       <HeroHeader></HeroHeader>
       <section className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-4 bg-background overflow-hidden text-foreground">
         <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px]">
-          <div className="flex flex-col items-center justify-center w-full max-w-6xl mx-auto gap-5 text-center">
+          <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto gap-5 text-center">
             <FadeIn>
-              <h1 className="font-medium text-4xl sm:text-6xl   leading-tight font-most text-teal-500">
-                Save & Organize the Web, Effortlessly
+              <h1 className="text-5xl font-extrabold   text-zinc-900 dark:text-white md:text-7xl mb-6 font-uncut">
+                Save & Organize the Web, <span className="text-yellow ">Effortlessly</span>
               </h1>{" "}
             </FadeIn>
             <FadeIn delay={0.5}>
-              <h3 className="text-lg md:text-2xl text-muted-foreground  ">
+              <h3 className="mt-4 text-lg md:text-xl font-normal text-zinc-500 md:max-w-3xl md:mx-auto mb-6 md:mb-10  ">
                 Your web research, organized — capture, annotate, share. No
                 clutter. No hassle.
               </h3>
@@ -28,7 +28,7 @@ export default function Home() {
             </FadeIn>
           </div>
 
-          <FadeIn delay={1.1}>
+          {/* <FadeIn delay={1.1}>
             <div className="relative mx-auto w-full overflow-hidden rounded-2xl bg-gray-900 will-change-transform md:aspect-[1360/725] mt-16">
               <video
                 autoPlay
@@ -48,10 +48,20 @@ export default function Home() {
                 Your browser does not support the video tag.
               </video>
             </div>
-          </FadeIn>
+          </FadeIn> */}
+          <p className="text-foreground text-center flex-1 block">
+            Made With 💗 By{" "}
+            <a
+              href="https://github.com/yashd-dev"
+              className="text-teal-500 dark:text-teal-400  hover:underline underline-offset-4 decoration-teal-500"
+            >
+              Yash D
+            </a>
+          </p>
         </div>
+
       </section>
-      <section className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-4 bg-background overflow-hidden text-foreground rounded-[2rem] relative">
+      {/* <section className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-4 bg-background overflow-hidden text-foreground rounded-[2rem] relative">
         <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px] ">
           <div className="flex flex-col items-start justify-center w-full max-w-6xl mx-auto gap-5 text-left">
             <h1 className="font-medium text-4xl sm:text-5xl leading-tight font-most text-teal-500">
@@ -78,16 +88,8 @@ export default function Home() {
 
           <Button>Get Started Free</Button>
         </div>
-      </section>
-      <p className="text-foreground text-center font-mono py-10">
-        Made With 💗 By{" "}
-        <a
-          href="https://github.com/yashd-dev"
-          className="text-teal-500 dark:text-teal-400  hover:underline underline-offset-4 decoration-teal-500"
-        >
-          Yash D
-        </a>
-      </p>
+      </section> */}
+
     </>
   );
 }

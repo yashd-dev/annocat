@@ -1,9 +1,28 @@
 "use client";
 import HeroHeader from "@/components/navbar";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
 import { authClient } from "@/lib/auth-client";
 
 export default function Login() {
+    const [loading, setLoading] = useState(false);
+
+    const handleLogin = async () => {
+        setLoading(true);
+        try {
+            await authClient.signIn.social({
+                provider: "github",
+                callbackURL: "/dashboard",
+                errorCallbackURL: "/error",
+            });
+            toast.success("Login successful!");
+        } catch (err) {
+            toast.error("Login failed. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <>
@@ -21,34 +40,36 @@ export default function Login() {
                     {/* Button Section */}
                     <div className="space-y-4">
                         <Button
-                            // variant="outline"
-                            onClick={async () => {
-                                await authClient.signIn.social({
-                                    provider: "github",
-                                    callbackURL: "/dashboard",
-                                    errorCallbackURL: "/error",
-                                });
-                            }}
+                            onClick={handleLogin}
                             size={"lg"}
                             className={"w-full "}
-                        // className="w-full py-6 px-4 text-base font-medium "
+                            disabled={loading}
                         >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                className="mr-3 bg-white rounded-full"
-                            >
-                                <path
-                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.529 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.848-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                                    fill="#181717"
-                                />
-                            </svg>
-                            Continue with GitHub
+                            {loading ? (
+                                <span className="flex items-center justify-center">
+                                    <svg className="animate-spin mr-2" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#181717" strokeWidth="4" fill="none" /></svg>
+                                    Logging in...
+                                </span>
+                            ) : (
+                                <span className="flex items-center justify-center">
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        className="mr-3 bg-white rounded-full"
+                                    >
+                                        <path
+                                            d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.529 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.22-.253-4.555-1.112-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.848-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.579.688.481C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                                            fill="#181717"
+                                        />
+                                    </svg>
+                                    Continue with GitHub
+                                </span>
+                            )}
                         </Button>
 
-                        <Button
+                        {/* <Button
                             variant="outline"
                             size={"lg"}
                             className="w-full py-6 px-4 text-base font-medium bg-white hover:bg-gray-50"
@@ -72,7 +93,7 @@ export default function Login() {
                                 />
                             </svg>
                             Continue with Google
-                        </Button>
+                        </Button> */}
                     </div>
                 </div>
             </div>

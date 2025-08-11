@@ -37,7 +37,7 @@ export default function GetExtension() {
     if (browser === "Google Chrome" || browser === "Microsoft Edge") {
         button = (
             <a href={extensionLinks[browser]} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-teal-500 hover:bg-teal-700 dark:text-white">
+                <Button size="lg" className="bg-blue hover:bg-light-blue dark:text-white">
                     <img src="/chrome.svg" alt="" className="size-5" />
                     Install for {browser}
                 </Button>

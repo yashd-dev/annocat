@@ -1,14 +1,9 @@
-import { Geist, Geist_Mono, IBM_Plex_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Provider } from "./provider";
-const ibm = IBM_Plex_Sans({
-  variable: "--font-ibm",
-  subsets: ["latin"],
-});
-const monster = Montserrat({
-  variable: "--font-most",
-  subsets: ["latin"],
-});
+import { Inter, Playfair } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+
+
 export const metadata = {
   title: "Annocat - Visually Capture, Annotate, Organize, Share",
   description: "Annocat helps you visually bookmark, annotate, organize, and share web content with a beautiful dashboard and Chrome extension.",
@@ -24,7 +19,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${ibm.className} ${monster.variable} antialiased selection:bg-teal-500 selection:text-black`}
+        className={`${inter.className} antialiased selection:bg-teal-500 selection:text-black`}
       >
         <Provider>
           {children}
