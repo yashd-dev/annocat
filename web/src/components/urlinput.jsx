@@ -35,7 +35,6 @@ export default function UrlInput({ userProjects = [] }) {
     "fill-pink text-pink",
     "fill-orange text-orange",
     "fill-green text-green",
-    "fill-blue text-blue",
     "fill-light-blue text-light-blue",
     "fill-purple text-purple",
     "fill-yellow text-yellow",
@@ -64,7 +63,7 @@ export default function UrlInput({ userProjects = [] }) {
   };
 
   return (
-    <Card className="flex flex-col h-full justify-center">
+    <Card className="flex flex-col h-full justify-center border border-blue">
       <CardHeader className="py-4">
         <CardTitle className="text-lg">Quickly Save a Link</CardTitle>
         <CardDescription className="text-sm leading-relaxed">
@@ -105,7 +104,7 @@ export default function UrlInput({ userProjects = [] }) {
           <div className="flex items-center justify-between px-1">
             <div className="text-sm text-muted-foreground">Save into</div>
             <a href="/dashboard/new">
-              <Button variant="ghost" className="h-auto py-2 font-normal">
+              <Button variant="ghost" className="h-auto py-2 font-normal hover:bg-teal-50">
                 <Plus className="w-4 h-4 mr-2" />
                 Add Tag
               </Button>
@@ -124,7 +123,7 @@ export default function UrlInput({ userProjects = [] }) {
                     type="button"
                     onClick={() => setSelectedProjectId(p.id)}
                     className={`flex items-center gap-2 px-3 py-1 rounded-md cursor-pointer border transition-all ${isSelected
-                      ? "ring-2 ring-offset-1 ring-foreground/40 border-transparent"
+                      ? "ring-2 ring-offset-1 ring-orange/60 border-transparent"
                       : "border-transparent hover:scale-[1.02]"
                       }`}
                   >

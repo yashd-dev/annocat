@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${inter.className} antialiased selection:bg-teal-500 selection:text-black font-uncut`}
+        className={`${inter.className} antialiased selection:bg-pink-400 selection:text-white font-uncut`}
       >
         <Provider>
           {children}

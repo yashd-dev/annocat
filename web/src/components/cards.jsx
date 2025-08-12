@@ -74,9 +74,9 @@ const CaptureCard = ({ project }) => {
                     </DropdownMenuContent>
                 </DropdownMenu>
 
-                {/* URL Display */}
+                {/* URL Display - Fixed Width */}
                 <div className="flex-1 mx-3">
-                    <div className="bg-white rounded-md px-3 py-1 border border-gray-200 text-sm text-gray-600 font-mono truncate max-w-full">
+                    <div className="bg-white rounded-md px-3 py-1 border border-gray-200 text-sm text-gray-600 font-mono truncate max-w-[300px] mx-auto text-center ">
                         {project.url}
                     </div>
                 </div>

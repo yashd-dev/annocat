@@ -5,6 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { fetchProjectDetailsById } from "@/db/fetch";
 import SanitizedHTML from "@/components/SanitizedHTML";
 import OpenLinks from "@/components/openLinks";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export default async function ProjectDetailsPage({ params }) {
     const awaitedParams = await params;
@@ -17,6 +18,11 @@ export default async function ProjectDetailsPage({ params }) {
 
     return (
         <div className="min-h-screen bg-background">
+            <header className="flex h-16 shrink-0 items-center gap-2">
+                <div className="flex items-center gap-2 px-4">
+                    <SidebarTrigger className="-ml-1" />
+                </div>
+            </header>
             <div className="max-w-4xl mx-auto px-6 py-12">
                 {/* Header Section */}
                 <div className="mb-16">

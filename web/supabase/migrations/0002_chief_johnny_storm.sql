@@ -1,0 +1,1 @@
+ALTER TABLE "capture" ADD COLUMN "favicon" text;

@@ -226,8 +226,16 @@ export const deleteProject = async (projectId) => {
 
 export const createCapture = async (captureData) => {
   try {
-    const { projectId, url, screenshotUrl, pageTitle, selector, notes } =
-      captureData;
+    const {
+      projectId,
+      url,
+      screenshotUrl,
+      pageTitle,
+      selector,
+      notes,
+      favicon,
+      filetype,
+    } = captureData;
 
     if (!projectId || !url || !screenshotUrl) {
       throw new Error("Project ID, URL, and screenshot URL are required");
@@ -255,8 +263,9 @@ export const createCapture = async (captureData) => {
       url: url.trim(),
       screenshotUrl: screenshotUrl.trim(),
       pageTitle: pageTitle?.trim() || null,
-      selector: selector?.trim() || null,
       notes: notes?.trim() || null,
+      favicon: favicon?.trim() || null,
+      filetype: filetype?.trim() || null,
       createdAt: now,
       updatedAt: now,
     };
@@ -480,6 +489,8 @@ export const fetchAllCapturesForUser = async () => {
         screenshotUrl: capture.screenshotUrl,
         notes: capture.notes,
         url: capture.url,
+        favicon: capture.favicon,
+        filetype: capture.filetype,
         createdAt: capture.createdAt,
         projectId: capture.projectId,
         projectName: project.name,

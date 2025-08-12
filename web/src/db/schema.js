@@ -78,7 +78,8 @@ export const capture = pgTable("capture", {
   pageTitle: text("page_title"),
   screenshotUrl: text("screenshot_url").notNull(),
   notes: text("notes"),
-  filetype: text("filetype").notNull(),
+  filetype: text("filetype"),
+  favicon: text("favicon"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
