@@ -3,10 +3,10 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { getCurrentUser, fetchUserProjects } from "@/db/fetch";
 
 export default async function DashboardLayout({ children }) {
-    // const user = await getCurrentUser();
-    // const projects = await fetchUserProjects();
-    const user = []
-    const projects = []
+    const user = await getCurrentUser();
+    const projects = await fetchUserProjects();
+    // const user = []
+    // const projects = []
     return (
         <SidebarProvider>
             <AppSidebar user={user} projects={projects} />

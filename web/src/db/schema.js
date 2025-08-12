@@ -76,9 +76,9 @@ export const capture = pgTable("capture", {
     .references(() => project.id, { onDelete: "cascade" }),
   url: text("url").notNull(),
   pageTitle: text("page_title"),
-  screenshotUrl: text("screenshot_url").notNull(), // Supabase/file URL
-  selector: text("selector"),
+  screenshotUrl: text("screenshot_url").notNull(),
   notes: text("notes"),
+  filetype: text("filetype").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -93,4 +93,3 @@ export const projectShare = pgTable("project_share", {
   isPublic: boolean("is_public").default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
-

@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { project, capture, user } from "./schema";
 import { eq, and, desc } from "drizzle-orm";
 import { nanoid } from "nanoid";
+import { url } from "inspector";
 
 export const getCurrentUser = async () => {
   const session = await auth.api.getSession({
@@ -442,6 +443,55 @@ export const fetchCapturesByProjectId = async (projectId) => {
     return captures;
   } catch (error) {
     console.error("Error fetching captures:", error);
+    throw error;
+  }
+};
+
+/**
+ * Get all captures for all projects of the current user
+ * @returns {Promise<Array>} Array of captures with project info
+ */
+export const fetchAllCapturesForUser = async () => {
+  try {
+    const currentUser = await getCurrentUser();
+
+    if (!currentUser?.id) {
+      throw new Error("User not authenticated");
+    }
+
+    // Get all projects for this user
+    const userProjects = await db
+      .select({ id: project.id, name: project.name })
+      .from(project)
+      .where(eq(project.userId, currentUser.id));
+
+    if (!userProjects.length) {
+      return [];
+    }
+
+    const projectIds = userProjects.map((p) => p.id);
+
+    // Get all captures for these projects
+    const allCaptures = await db
+      .select({
+        id: capture.id,
+        url: capture.url,
+        pageTitle: capture.pageTitle,
+        screenshotUrl: capture.screenshotUrl,
+        notes: capture.notes,
+        url: capture.url,
+        createdAt: capture.createdAt,
+        projectId: capture.projectId,
+        projectName: project.name,
+      })
+      .from(capture)
+      .innerJoin(project, eq(capture.projectId, project.id))
+      .where(eq(project.userId, currentUser.id))
+      .orderBy(desc(capture.createdAt));
+
+    return allCaptures;
+  } catch (error) {
+    console.error("Error fetching all captures for user:", error);
     throw error;
   }
 };

@@ -9,8 +9,13 @@ export default function Home() {
   return (
     <>
       <HeroHeader></HeroHeader>
-      <section className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-4 bg-background overflow-hidden text-foreground">
-        <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px]">
+      <section className="h-screen w-full flex flex-col justify-center items-center p-16 px-4 bg-background overflow-hidden text-foreground relative">
+
+        <div className="absolute top-0 bottom-0 mx-auto left-1/2 transform -translate-x-1/2 z-0 w-full md:w-[1200px] lg:w-[1600px] max-w-screen opacity-45">
+          <img src="/shapes/1.svg" className="hidden lg:block w-full h-full object-cover" alt="Shapes" />
+          <img src="/shapes/2.svg" className="md:hidden w-full h-full object-cover" alt="Shapes" />
+        </div>
+        <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px] relative z-20">
           <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto gap-5 text-center">
             <FadeIn>
               <h1 className="text-5xl font-extrabold   text-zinc-900 dark:text-white md:text-7xl mb-6 font-uncut">
@@ -24,72 +29,28 @@ export default function Home() {
               </h3>
             </FadeIn>
             <FadeIn delay={1}>
-              <GetExtension />
+              <a href="/login">
+                <Button size="lg" className="bg-blue hover:bg-light-blue dark:text-white">
+                  Lets Collect them Links!
+                </Button>
+              </a>
             </FadeIn>
           </div>
+          <FadeIn delay={1.5}>
 
-          {/* <FadeIn delay={1.1}>
-            <div className="relative mx-auto w-full overflow-hidden rounded-2xl bg-gray-900 will-change-transform md:aspect-[1360/725] mt-16">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                width="1360"
-                height="725"
-                className="md:block rounded-2xl overflow-hidden mx-auto w-full h-auto"
-                style={{ background: "#000" }}
-                poster="https://placehold.co/1360x725/000000/FFFFFF?text=Your+Web+Research+Dashboard"
+            <p className="text-foreground text-center flex-1 block">
+              Made With 💗 By{" "}
+              <a
+                href="https://github.com/yashd-dev"
+                className="text-teal-500 dark:text-teal-400  hover:underline underline-offset-4 decoration-teal-500"
               >
-                <source
-                  src="https://framerusercontent.com/assets/xczsI9Xq2X6OvsvU8NVUiUJUXuA.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </FadeIn> */}
-          <p className="text-foreground text-center flex-1 block">
-            Made With 💗 By{" "}
-            <a
-              href="https://github.com/yashd-dev"
-              className="text-teal-500 dark:text-teal-400  hover:underline underline-offset-4 decoration-teal-500"
-            >
-              Yash D
-            </a>
-          </p>
-        </div>
+                Yash D
+              </a>
+            </p>
+          </FadeIn>
 
-      </section>
-      {/* <section className="min-h-screen w-full flex flex-col justify-center items-center py-16 px-4 bg-background overflow-hidden text-foreground rounded-[2rem] relative">
-        <div className="w-full  mx-auto flex flex-col justify-center items-center space-y-8 md:space-y-[65px] pt-12 lg:pt-[150px] ">
-          <div className="flex flex-col items-start justify-center w-full max-w-6xl mx-auto gap-5 text-left">
-            <h1 className="font-medium text-4xl sm:text-5xl leading-tight font-most text-teal-500">
-              Efficiency At It&apos;s Peak
-            </h1>
-            <h3 className="text-xl text-gray-600  ">
-              Double Your Productivity
-            </h3>
-            <Features></Features>
-          </div>
         </div>
       </section>
-      <section className="min-h-[30vh] w-full flex flex-col justify-center items-center py-16 px-4 bg-teal-500 overflow-hidden text-zinc-950 relative max-w-7xl mx-auto mt-10 rounded-[2rem]">
-        <img src="/cool.svg" className="absolute inset-0 z-10 opacity-55"></img>
-
-        <div className="relative z-10 flex flex-col items-center justify-center gap-6">
-          <h1 className="font-medium text-4xl sm:text-5xl text-center  leading-tight font-most text-zinc-50">
-            Start Organizing Your Web Research Today
-          </h1>
-          <p className="text-lg md:text-xl text-center max-w-xl text-zinc-50/80">
-            Effortlessly capture, annotate, and share insights. No clutter. No
-            hassle. Your knowledge, always at your fingertips.
-          </p>
-
-          <Button>Get Started Free</Button>
-        </div>
-      </section> */}
-
     </>
   );
 }
